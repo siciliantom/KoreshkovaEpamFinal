@@ -7,8 +7,14 @@ import by.bsu.hostel.command.crucial.*;
 import by.bsu.hostel.command.show.ShowBookingFormCommand;
 import by.bsu.hostel.command.show.ShowRegistrationFormCommand;
 
+
 /**
- * Created by Kate on 08.02.2016.
+ * Created by Kate on 05.02.2016.
+ *
+ * Enum with all command types
+ *
+ * @author Kate
+ * @version 1.0
  */
 public enum CommandEnum {
     LOGIN {

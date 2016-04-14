@@ -13,7 +13,13 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
- * Created by Kate on 07.04.2016.
+ * Created by Kate on 05.02.2016.
+ *
+ * Class for getting vacant rooms for current application
+ *
+ * @implements ActionCommand
+ * @author Kate
+ * @version 1.0
  */
 public class RetrieveAppropriateRoomsCommand implements ActionCommand {
     private static final String APPLICATION_ID_PARAM = "application_id";

@@ -6,7 +6,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by Kate on 25.02.2016.
+ * Class for checking the register form for validness
+ *
+ * @author Kate
+ * @version 1.0
  */
 public class RegisterLogic {
     private static final String REGEX_LETTERS = "[a-zA-ZА-Яа-я]{2,24}";

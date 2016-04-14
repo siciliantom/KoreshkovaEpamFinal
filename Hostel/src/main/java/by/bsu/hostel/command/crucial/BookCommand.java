@@ -22,7 +22,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Kate on 15.03.2016.
+ * Created by Kate on 05.02.2016.
+ *
+ * Class for booking the room
+ *
+ * @implements ActionCommand
+ * @author Kate
+ * @version 1.0
  */
 public class BookCommand implements ActionCommand {
     private static final String PARAM_NAME_PLACES = "places";
@@ -42,6 +48,13 @@ public class BookCommand implements ActionCommand {
     private static final String PARAM_NAME_ROOM = "room_type";
     static Logger log = Logger.getLogger(BookCommand.class);
 
+    /**
+     * @Method for booking the room
+     *
+     * @param request
+     * @return
+     * @throws CommandException
+     */
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
         MessageManager messageManager;

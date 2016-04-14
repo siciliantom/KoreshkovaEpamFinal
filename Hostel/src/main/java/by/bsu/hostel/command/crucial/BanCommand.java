@@ -17,7 +17,13 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Created by Kate on 10.04.2016.
+ * Created by Kate on 05.02.2016.
+ *
+ * Class for banning or unbanning client
+ *
+ * @implements ActionCommand
+ * @author Kate
+ * @version 1.0
  */
 public class BanCommand implements ActionCommand {
     private static final String BANNED_APPLICATIONS_ATTR = "bannedApplications";
@@ -26,6 +32,13 @@ public class BanCommand implements ActionCommand {
     private static final String CLIENTS_LIST_ATTRIBUTE = "clientsList";
     static Logger log = Logger.getLogger(BanCommand.class);
 
+    /**
+     * @Method for banning or unbanning client
+     *
+     * @param request
+     * @return String
+     * @throws CommandException
+     */
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
         String page = ConfigurationManager.getProperty("path.page.clients");

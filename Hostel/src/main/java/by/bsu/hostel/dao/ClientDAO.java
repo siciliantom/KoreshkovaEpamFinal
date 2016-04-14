@@ -16,7 +16,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Kate on 13.02.2016.
+ * Created by Kate on 05.02.2016.
+ *
+ * Class for working with clients
+ *
+ * @author Kate
+ * @version 1.0
  */
 public class ClientDAO extends DAO<Client> {
     public static final String SQL_SELECT_ALL_CLIENTS = "SELECT client.id, client.name, surname, country, status.banned " +
@@ -47,6 +52,12 @@ public class ClientDAO extends DAO<Client> {
         this.proxyConnection = proxyConnection;
     }
 
+    /**
+     * Retrieves all clients
+     *
+     * @return List<Client>
+     * @throws DAOException
+     */
     @Override
     public List<Client> findAll() throws DAOException {
         List<Client> clients = new ArrayList<Client>();
@@ -72,6 +83,13 @@ public class ClientDAO extends DAO<Client> {
         return clients;
     }
 
+    /**
+     * Find definite client in db
+     *
+     * @param authentication
+     * @return Client
+     * @throws DAOException
+     */
     public Client findByLogPass(Authentication authentication) throws DAOException {
         Client client = null;
         PreparedStatement statement = null;
@@ -117,6 +135,13 @@ public class ClientDAO extends DAO<Client> {
         return client;
     }
 
+    /**
+     * Checks if client is banned
+     *
+     * @param rowId
+     * @return boolean
+     * @throws DAOException
+     */
     public boolean isBanned(String rowId) throws DAOException {
         boolean isBanned = false;
         PreparedStatement statement = null;
@@ -130,7 +155,7 @@ public class ClientDAO extends DAO<Client> {
                     isBanned = true;
                 }
             }
-        } catch (SQLException e) {
+        } catch (SQLException | NumberFormatException e) {
             throw new DAOException(e);
         } finally {
             close(statement);
@@ -138,6 +163,13 @@ public class ClientDAO extends DAO<Client> {
         return isBanned;
     }
 
+    /**
+     * Make client banned
+     *
+     * @param clientId
+     * @return boolean
+     * @throws DAOException
+     */
     public boolean setBan(String clientId) throws DAOException {
         boolean isBanned = false;
         PreparedStatement statement = null;
@@ -155,6 +187,13 @@ public class ClientDAO extends DAO<Client> {
         return isBanned;
     }
 
+    /**
+     * Make client unbanned
+     *
+     * @param clientId
+     * @return boolean
+     * @throws DAOException
+     */
     public boolean setUnban(String clientId) throws DAOException {
         boolean isUnbanned = false;
         PreparedStatement statement = null;
@@ -172,6 +211,13 @@ public class ClientDAO extends DAO<Client> {
         return isUnbanned;
     }
 
+    /**
+     * Add new client to db
+     *
+     * @param client
+     * @return boolean
+     * @throws DAOException
+     */
     @Override
     public boolean add(Client client) throws DAOException {
         boolean clientAdded = false;

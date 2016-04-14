@@ -10,12 +10,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
+
 
 /**
- * Created by Kate on 06.03.2016.
+ * Created by Kate on 05.02.2016.
+ *
+ * Class for working with applications
+ *
+ * @author Kate
+ * @version 1.0
  */
 public class ApplicationDAO extends DAO<Application> {
     public static final String SQL_LAST_INSERTED_ID = "SELECT LAST_INSERT_ID()";
@@ -49,6 +53,13 @@ public class ApplicationDAO extends DAO<Application> {
         this.proxyConnection = proxyConnection;
     }
 
+    /**
+     *Add application to db
+     *
+     * @param application
+     * @return boolean
+     * @throws DAOException
+     */
     @Override
     public boolean add(Application application) throws DAOException {
         boolean applicationAdded = false;
@@ -93,10 +104,17 @@ public class ApplicationDAO extends DAO<Application> {
         return applicationAdded;
     }
 
+    /**
+     * Retrieves all applications for valid date
+     *
+     * @return List<Application>
+     * @throws DAOException
+     */
     public List<Application> findCurrentApplications() throws DAOException {
         List<Application> applicationList = new ArrayList<Application>();
         PreparedStatement getCurrentApplications = null;
         Date date = new Date();
+
         try {
             getCurrentApplications = proxyConnection.prepareStatement(SQL_SELECT_CURRENT_APPLICATIONS);
             getCurrentApplications.setDate(1, new java.sql.Date(date.getTime()));
@@ -122,6 +140,14 @@ public class ApplicationDAO extends DAO<Application> {
         return applicationList;
     }
 
+
+
+    /**
+     * Retrieves all applications for past date
+     *
+     * @return List<Application>
+     * @throws DAOException
+     */
     public List<Application> findHistoryApplications() throws DAOException {
         List<Application> applicationList = new ArrayList<Application>();
         PreparedStatement getHistoryApplications = null;
@@ -151,6 +177,12 @@ public class ApplicationDAO extends DAO<Application> {
         return applicationList;
     }
 
+    /**
+     * Retrieves all applications for valid date for definite client
+     *
+     * @return List<Application>
+     * @throws DAOException
+     */
     public List<Application> findCurrentApplicationsById(Long clientId) throws DAOException {
         List<Application> applicationList = new ArrayList<Application>();
         PreparedStatement findCurrentApplications = null;
@@ -190,6 +222,12 @@ public class ApplicationDAO extends DAO<Application> {
         return applicationList;
     }
 
+    /**
+     * Retrieves all applications for past date for definite client
+     *
+     * @return List<Application>
+     * @throws DAOException
+     */
     public List<Application> findHistoryApplicationsById(Long clientId) throws DAOException {
         List<Application> applicationList = new ArrayList<Application>();
         PreparedStatement findHistoryApplications = null;
@@ -229,6 +267,12 @@ public class ApplicationDAO extends DAO<Application> {
         return applicationList;
     }
 
+    /**
+     * Delete applications by definite ids
+     *
+     * @return List<Application>
+     * @throws DAOException
+     */
     public boolean deleteById(List<String> idsList) throws DAOException {
         boolean applicationsDeleted = false;
         PreparedStatement deleteApplications = null;
@@ -256,6 +300,12 @@ public class ApplicationDAO extends DAO<Application> {
         return applicationsDeleted;
     }
 
+    /**
+     * Confirms the order for client
+     *
+     * @return List<Application>
+     * @throws DAOException
+     */
     public boolean setConfirmation(Application application) throws DAOException {
         boolean applicationsUpdated = false;
         PreparedStatement setConfirmation = null;

@@ -20,7 +20,13 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Created by Kate on 18.02.2016.
+ * Created by Kate on 05.02.2016.
+ *
+ * Class for register client
+ *
+ * @implements ActionCommand
+ * @author Kate
+ * @version 1.0
  */
 public class RegisterCommand implements ActionCommand {
     private static final String PARAM_NAME_FIRSTNAME = "name";
@@ -47,6 +53,13 @@ public class RegisterCommand implements ActionCommand {
     private static final String EN = "en_US";
     static Logger log = Logger.getLogger(RegisterCommand.class);
 
+    /**
+     *
+     *
+     * @param request
+     * @return String
+     * @throws CommandException
+     */
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
         HttpSession session = request.getSession();

@@ -12,7 +12,13 @@ import javax.servlet.http.HttpSession;
 import java.util.Date;
 
 /**
- * Created by Kate on 09.03.2016.
+ * Created by Kate on 05.02.2016.
+ *
+ * Class for showing booking form
+ *
+ * @implements ActionCommand
+ * @author Kate
+ * @version 1.0
  */
 public class ShowBookingFormCommand implements ActionCommand {
     private static final int DAY_IN_MS = 24 * 60 * 60 * 1000;

@@ -7,7 +7,14 @@ import java.util.Properties;
 import java.util.concurrent.Executor;
 
 /**
- * Created by Kate on 07.02.2016.
+ * Class which specifies connection
+ * definitely for our pool, preventing
+ * from wild connections
+ *
+ *
+ * @implements Connection
+ * @author Kate
+ * @version 1.0
  */
 public class ProxyConnection implements Connection {
     private Connection connection;

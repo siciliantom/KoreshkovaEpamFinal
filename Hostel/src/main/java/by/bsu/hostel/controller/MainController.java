@@ -16,12 +16,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-//
-////package by.bsu.hostel.controller;
-////
-/////**
-//// * Created by Kate on 05.02.2016.
-//// */
+/**
+ * Created by Kate on 05.02.2016.
+ *
+ * Class for controlling commands
+ *
+ * @author Kate
+ * @version 1.0
+ */
 @WebServlet("/controller")
 public class MainController extends HttpServlet {
     private final String START_PAGE = "path.page.login";
@@ -31,7 +33,7 @@ public class MainController extends HttpServlet {
     @Override
     public void init() throws ServletException {
         super.init();
-        ConnectionPool connectionPool = ConnectionPool.getInstance();
+        ConnectionPool.getInstance();
     }
 
     @Override

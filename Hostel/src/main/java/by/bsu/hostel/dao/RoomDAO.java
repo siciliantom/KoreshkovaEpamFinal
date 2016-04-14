@@ -15,7 +15,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Kate on 07.04.2016.
+ * Created by Kate on 05.02.2016.
+ *
+ * Class for working with rooms
+ *
+ * @author Kate
+ * @version 1.0
  */
 public class RoomDAO extends DAO<Room> {
     public static final String SQL_SELECT_ROOMS_FOR_APPLICATION = "SELECT room.id, max_places, price, room_type " +
@@ -34,6 +39,13 @@ public class RoomDAO extends DAO<Room> {
         this.proxyConnection = proxyConnection;
     }
 
+    /**
+     * Finding free rooms for the selected dates
+     *
+     * @param applicationId
+     * @return List<Room>
+     * @throws DAOException
+     */
     public List<Room> findAppropriate(String applicationId) throws DAOException {
         List<Room> rooms = new ArrayList<Room>();
         Map<Integer, Integer> dayCompletionList;

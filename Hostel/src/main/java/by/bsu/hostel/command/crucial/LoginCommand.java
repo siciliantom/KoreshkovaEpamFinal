@@ -22,6 +22,12 @@ import java.util.List;
 
 /**
  * Created by Kate on 05.02.2016.
+ *
+ * Class for logging in
+ *
+ * @implements ActionCommand
+ * @author Kate
+ * @version 1.0
  */
 public class LoginCommand implements ActionCommand {
     private static final String PARAM_NAME_LOGIN = "login";
@@ -41,12 +47,19 @@ public class LoginCommand implements ActionCommand {
     private static final String LOG_PASS_ERROR_MESSAGE = "errorLoginPassMessage";
     static Logger log = Logger.getLogger(LoginCommand.class);
 
+    /**
+     *
+     * @param request
+     * @return String
+     * @throws CommandException
+ */
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
         HttpSession session = request.getSession();
         MessageManager messageManager;
         List<Application> applicationListAdmin = null;
         List<Application> bannedApplications = new ArrayList<>();
+        List<Application> frozenApplications = new ArrayList<>();
         List<Application> applicationConfirmedListAdmin = new ArrayList<>();
         List<Application> applicationListUser = null;
         ClientService clientService = ClientService.getInstance();
@@ -77,7 +90,19 @@ public class LoginCommand implements ActionCommand {
             try {
                 if (ROLE_USER.equals(session.getAttribute(ROLE_ATTRIBUTE))) {
                     applicationListUser = applicationService.currentApplicationsById(client.getId());
+                    if (client.getStatus().getBanned().equals(ConfirmationEnum.YES)) {
+                        Iterator<Application> iterator = applicationListUser.iterator();
+                        Application currentApplication;
+                        while (iterator.hasNext()) {
+                            currentApplication = iterator.next();
+                            if (currentApplication.getConfirmed().equals(ConfirmationEnum.NO)) {
+                                frozenApplications.add(currentApplication);
+                                iterator.remove();
+                            }
+                        }
+                    }
                     session.setAttribute(BEFORE_PAGE_ATTRIBUTE, "path.page.login");
+                    session.setAttribute("frozenApplications", frozenApplications);
                     page = ConfigurationManager.getProperty("path.page.main_user");
                 }
                 if (ROLE_ADMIN.equals(session.getAttribute(ROLE_ATTRIBUTE))) {

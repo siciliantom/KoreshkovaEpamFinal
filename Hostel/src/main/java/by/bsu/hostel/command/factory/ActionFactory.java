@@ -1,13 +1,17 @@
 package by.bsu.hostel.command.factory;
 
-/**
- * Created by Kate on 08.02.2016.
- */
-
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
-
+/**
+ * Created by Kate on 05.02.2016.
+ *
+ * Class for generating commands
+ *
+ * @implements ActionCommand
+ * @author Kate
+ * @version 1.0
+ */
 public class ActionFactory {
     private static final String COMMAND_PARAM = "command";
     static Logger log = Logger.getLogger(ActionFactory.class);

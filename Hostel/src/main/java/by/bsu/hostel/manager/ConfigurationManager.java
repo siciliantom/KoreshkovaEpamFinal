@@ -5,7 +5,14 @@ package by.bsu.hostel.manager;
  */
 
 import java.util.ResourceBundle;
-
+/**
+ * Created by Kate on 05.02.2016.
+ *
+ * Class for configurating the jsp path
+ *
+ * @author Kate
+ * @version 1.0
+ */
 public class ConfigurationManager {
     private final static ResourceBundle resourceBundle = ResourceBundle.getBundle("config");
 

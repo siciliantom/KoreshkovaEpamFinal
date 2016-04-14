@@ -12,7 +12,15 @@ import org.apache.log4j.Logger;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
-
+/**
+ * Created by Kate on 05.02.2016.
+ *
+ * Class which represents main policies for working
+ * with db and with entities
+ *
+ * @author Kate
+ * @version 1.0
+ */
 public abstract class DAO<T extends Entity> {
     static Logger log = Logger.getLogger(DAO.class);
     protected ProxyConnection proxyConnection;

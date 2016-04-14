@@ -15,7 +15,13 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Created by Kate on 21.03.2016.
+ * Created by Kate on 05.02.2016.
+ *
+ * Class for deleteing applications
+ *
+ * @implements ActionCommand
+ * @author Kate
+ * @version 1.0
  */
 public class DeleteApplicationCommand implements ActionCommand {
     private static final String ROLE_ADMIN = "admin";
@@ -28,6 +34,12 @@ public class DeleteApplicationCommand implements ActionCommand {
     private static final String LAST_PAGE_ATTRIBUTE = "last_page";
     static Logger log = Logger.getLogger(DeleteApplicationCommand.class);
 
+    /**
+     *
+     * @param request
+     * @return String
+     * @throws CommandException
+     */
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
         List<Application> applicationListAdmin = null;

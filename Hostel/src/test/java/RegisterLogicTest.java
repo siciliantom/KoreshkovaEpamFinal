@@ -1,4 +1,5 @@
 import by.bsu.hostel.domain.Client;
+import by.bsu.hostel.exception.ServiceException;
 import by.bsu.hostel.logic.RegisterLogic;
 import org.junit.Test;
 
@@ -10,7 +11,7 @@ import static junit.framework.TestCase.assertTrue;
  */
 public class RegisterLogicTest {
     @Test
-    public void testRegistration() {
+    public void testRegistration() throws ServiceException {
         RegisterLogic registerLogic = new RegisterLogic();
         Client client = new Client();
         client.setName("George1234");

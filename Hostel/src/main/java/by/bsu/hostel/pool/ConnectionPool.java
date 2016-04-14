@@ -11,7 +11,13 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * Created by Kate on 07.02.2016.
+ * Created by Kate on 05.02.2016.
+ *
+ * Class which have a set number of connections
+ * to use again
+ *
+ * @author Kate
+ * @version 1.0
  */
 public class ConnectionPool {
     private static final int POOL_SIZE = 4;
@@ -22,6 +28,12 @@ public class ConnectionPool {
     private static Lock lock = new ReentrantLock();
     static Logger log = Logger.getLogger(ConnectionPool.class);
 
+    /**
+     * Constructor for creating a queue of connections
+     *
+     * @param POOL_SIZE
+     * @throws PoolException
+     */
     private ConnectionPool(final int POOL_SIZE) throws PoolException {
         connectionQueue = new ArrayBlockingQueue<ProxyConnection>(POOL_SIZE);
         log.debug("Connecting to database...");
@@ -47,6 +59,12 @@ public class ConnectionPool {
         }
     }
 
+    /**
+     * Method for retrieving the instance of ConnectionPool
+     * from outside
+     *
+     * @return ConnectionPool
+     */
     public static ConnectionPool getInstance() {
         if (!instanceCreated) {
             lock.lock();
@@ -66,6 +84,11 @@ public class ConnectionPool {
         return connectionPool;
     }
 
+    /**
+     * Method returns ProxyConnection from pool
+     *
+     * @return ProxyConnection
+     */
     public static ProxyConnection getConnection() {
         ProxyConnection proxyConnection = null;
         try {
@@ -76,10 +99,19 @@ public class ConnectionPool {
         return proxyConnection;
     }
 
+    /**
+     * Method returns ProxyConnection back to
+     * pool queue of connections
+     *
+     */
     public static void returnConnection(ProxyConnection connection) {
         connectionQueue.offer(connection);
     }
 
+    /**
+     * Method which closes pool and all its connections
+     *
+     */
     public static void closePool() {
         int currentPoolSize = 0;
         int attemptsCount = 0;

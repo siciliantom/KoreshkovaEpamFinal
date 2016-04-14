@@ -8,7 +8,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 /**
- * Created by Kate on 07.03.2016.
+ * Created by Kate on 29.03.2016.
+ *
+ * Class for changing the language of interface
+ *
+ * @implements ActionCommand
+ * @author Kate
+ * @version 1.0
  */
 public class ChangeLangCommand implements ActionCommand {
     private static final String EN = "en_US";
@@ -19,6 +25,13 @@ public class ChangeLangCommand implements ActionCommand {
     private static final String SELECTED = "selected";
     static Logger log = Logger.getLogger(ChangeLangCommand.class);
 
+    /**
+     *Method for changing the language of interface
+     *
+     * @param request
+     * @return String
+     * @throws CommandException
+     */
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
         HttpSession session = request.getSession();

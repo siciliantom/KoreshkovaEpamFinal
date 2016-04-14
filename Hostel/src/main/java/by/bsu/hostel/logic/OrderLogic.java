@@ -7,7 +7,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by Kate on 27.03.2016.
+ * Class for checking the order form for validness
+ *
+ * @author Kate
+ * @version 1.0
  */
 public class OrderLogic {
     private static final String REGEX_NUMBERS = "[1-8]{1}";

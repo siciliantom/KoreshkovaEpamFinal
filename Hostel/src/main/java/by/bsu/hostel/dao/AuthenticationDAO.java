@@ -11,7 +11,12 @@ import java.sql.SQLException;
 import java.util.List;
 
 /**
- * Created by Kate on 28.03.2016.
+ * Created by Kate on 05.02.2016.
+ *
+ * Class for working with authentications
+ *
+ * @author Kate
+ * @version 1.0
  */
 public class AuthenticationDAO extends DAO<Authentication> {
     public static final String SQL_SELECT_AUTHENTICATION_BY_LOGPASS = "SELECT id, role_id FROM authentication " +
@@ -24,10 +29,21 @@ public class AuthenticationDAO extends DAO<Authentication> {
         this.proxyConnection = proxyConnection;
     }
 
+    /**
+     * Checks if client with such login
+     * and password have already existed
+     *
+     * @param authentication
+     * @return List<Application>
+     * @throws DAOException
+     */
     public Boolean checkAuthenticationExistence(Authentication authentication) throws DAOException {
         Boolean existsAlready = false;
         PreparedStatement statement = null;
         ResultSet resultSet;
+        if(authentication == null){
+            return existsAlready;
+        }
         try {
             statement = proxyConnection.prepareStatement(SQL_SELECT_AUTHENTICATION_BY_LOGPASS);
             statement.setString(1, authentication.getLogin());
@@ -44,10 +60,20 @@ public class AuthenticationDAO extends DAO<Authentication> {
         return existsAlready;
     }
 
+    /**
+     * Checks if there is a client with such login in db
+     *
+     * @param authentication
+     * @return Boolean
+     * @throws DAOException
+     */
     public Boolean checkLoginExistence(Authentication authentication) throws DAOException {
         Boolean existsAlready = false;
         PreparedStatement statement = null;
         ResultSet resultSet;
+        if(authentication == null){
+            return existsAlready;
+        }
         try {
             statement = proxyConnection.prepareStatement(SQL_SELECT_AUTHENTICATION_BY_LOGIN);
             statement.setString(1, authentication.getLogin());

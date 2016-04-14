@@ -6,7 +6,12 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 /**
- * Created by Kate on 20.02.2016.
+ * Class for configurating db connection
+ *
+ *
+ * @implements Connection
+ * @author Kate
+ * @version 1.0
  */
 class ConnectorDB {
     static Connection getConnection() throws SQLException {

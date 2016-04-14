@@ -14,7 +14,13 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
- * Created by Kate on 26.03.2016.
+ * Created by Kate on 05.02.2016.
+ *
+ * Class for getting history applications
+ *
+ * @implements ActionCommand
+ * @author Kate
+ * @version 1.0
  */
 public class RetrieveHistoryCommand implements ActionCommand {
     private static final String ROLE_ADMIN = "admin";

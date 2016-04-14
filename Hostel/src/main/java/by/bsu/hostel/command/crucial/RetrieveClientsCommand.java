@@ -13,7 +13,13 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
- * Created by Kate on 10.04.2016.
+ * Created by Kate on 05.02.2016.
+ *
+ * Class for getting clients
+ *
+ * @implements ActionCommand
+ * @author Kate
+ * @version 1.0
  */
 public class RetrieveClientsCommand implements ActionCommand {
     private static final String BEFORE_PAGE_ATTR = "before_page";

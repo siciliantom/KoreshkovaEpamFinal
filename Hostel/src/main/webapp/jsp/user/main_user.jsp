@@ -45,6 +45,18 @@
 
                     </tr>
                 </c:forEach>
+                <c:forEach var="application" items="${frozenApplications}">
+                    <tr bgcolor=#e9967a>
+                        <td></td>
+                        <td>${application.placesAmount}</td>
+                        <td>${application.arrivalDate}</td>
+                        <td>${application.departureDate}</td>
+                        <td>${application.finalPrice}$</td>
+                        <td>${application.room.type}</td>
+                        <td>${application.confirmed}</td>
+                        <td><fmt:message key="label.freeze"/></td>
+                    </tr>
+                </c:forEach>
                 <tr></tr>
                 <tr>
                     <td></td>

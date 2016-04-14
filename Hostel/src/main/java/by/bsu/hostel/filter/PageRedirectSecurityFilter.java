@@ -10,7 +10,14 @@ import javax.servlet.annotation.WebInitParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
+/**
+ * Class for redirecting to the initial
+ * page if trying to get to jsp from
+ * browser
+ *
+ * @author Kate
+ * @version 1.0
+ */
 @WebFilter(urlPatterns = {"/jsp/*"},
         initParams = {@WebInitParam(name = "INDEX_PATH", value = "/index.jsp")})
 public class PageRedirectSecurityFilter implements Filter {

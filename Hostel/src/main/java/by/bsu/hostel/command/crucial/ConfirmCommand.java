@@ -17,7 +17,13 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Created by Kate on 07.04.2016.
+ * Created by Kate on 05.02.2016.
+ *
+ * Class for confirming order
+ *
+ * @implements ActionCommand
+ * @author Kate
+ * @version 1.0
  */
 public class ConfirmCommand implements ActionCommand {
     private static final String ADMIN_APPLICATION_LIST_ATTR = "applicationListAdmin";
@@ -26,6 +32,13 @@ public class ConfirmCommand implements ActionCommand {
     private static final String APPLICATION_ID_ATTR = "applicationId";
     static Logger log = Logger.getLogger(ConfirmCommand.class);
 
+    /**
+     * @Method for confirming order
+     *
+     * @param request
+     * @return
+     * @throws CommandException
+     */
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
         ClientService clientService;
